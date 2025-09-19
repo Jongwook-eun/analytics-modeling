@@ -1,5 +1,14 @@
-#Question 2.2.1-2.2.2 (SVM)
+## Question 2.2
+# The files credit_card_data.txt (without headers) and credit_card_data-headers.txt (with headers) contain a dataset with 654 data points, 6 continuous and 4 binary predictor variables.  It has anonymized credit card applications with a binary response variable (last column) indicating if the application was positive or negative. The dataset is the “Credit Approval Data Set” from the UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/Credit+Approval) without the categorical variables and without data points that have missing values.
 
+## Question 2.2.1 
+# Using the support vector machine function ksvm contained in the R package kernlab, find a good classifier for this data. Show the equation of your classifier, and how well it classifies the data points in the full data set.  (Don’t worry about test/validation data yet; we’ll cover that topic soon.)
+## Question 2.2.2
+# You are welcome, but not required, to try other (nonlinear) kernels as well; we’re not covering them in this course, but they can sometimes be useful and might provide better predictions than vanilladot.
+## Question 2.2.3
+# Using the k-nearest-neighbors classification function kknn contained in the R kknn package, suggest a good value of k, and show how well it classifies that data points in the full data set.  Don’t forget to scale the data (scale=TRUE in kknn).
+
+## Solution 2.2.1-2.2.2 (SVM)
 data <- read.table("credit_card_data-headers.txt",header=T)
 str(data)
 data[,11]=as.factor(data[,11])
@@ -34,8 +43,7 @@ a <- colSums(model@xmatrix[[1]] * model@coef[[1]])
 a
 
 
-#Question 2.2.3 (KNN)
-
+## Solution 2.2.3 (KNN)
 library(kknn)
 
 # numeric(0/1)
@@ -67,3 +75,4 @@ for (j in seq_along(k.values)) {
 
 results <- data.frame(k = k.values, accuracy = acc)
 print(results)
+
