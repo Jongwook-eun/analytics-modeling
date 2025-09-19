@@ -1,4 +1,13 @@
-### Question 3.1
+### Quesiton 3.1
+#Using the same data set (credit_card_data.txt or credit_card_data-headers.txt) as in Question 2.2, use the ksvm or kknn function to find a good classifier:
+#using cross-validation (do this for the k-nearest-neighbors model; SVM is optional); and
+#splitting the data into training, validation, and test data sets (pick either KNN or SVM; the other is optional).
+
+### Question 4.2 
+#The iris data set iris.txt contains 150 data points, each with four predictor variables and one categorical response. The predictors are the width and length of the sepal and petal of flowers and the response is the type of flower. The data is available from the R library datasets and can be accessed with iris once the library is loaded. It is also available at the UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/Iris ). The response values are only given to see how well a specific method performed and should not be used to build the model.
+#Use the R function kmeans to cluster the points as well as possible. Report the best combination of predictors, your suggested value of k, and how well your best clustering predicts flower type.
+
+### Solution 3.1
 # KNN Classification: CV + Holdout
 library(kknn)
 data <- read.table("credit_card_data-headers.txt", header = TRUE)
@@ -90,7 +99,7 @@ print(table(True = test$R1, Pred = factor(pred_test, levels = c(0, 1))))
 
 
 
-### Question 4.2
+### Solution 4.2
 iris <- read.table("iris.txt", header=TRUE)
 
 X <- scale(iris[,1:4])   # predictors
@@ -104,4 +113,5 @@ print(tab)
 
 # # Simple accuracy (assuming each cluster is classified by its majority class)
 simple_acc <- sum(apply(tab, 1, max)) / nrow(iris)
+
 cat("Simple accuracy =", round(simple_acc,4), "\n")
