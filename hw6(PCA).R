@@ -88,6 +88,7 @@ comp = data.frame(
   RMSE = c(ols_RMSE, pcr_RMSE)
 )
 print(comp)
+#>> 돌려보면 R^2는 낮게, AIC/RMSE는 높게나와서 모델평가는 더 안좋아졌지만, PCA는 그럼에도 다중공선성이나 overfit을 어느정도 해결해주는 장점이 잇음
 
 # ----- 7. Prediction for a new observation -----
 new_city = data.frame(
@@ -127,4 +128,5 @@ pred_ci <- predict(fit_pcr, newdata = nd, interval = "confidence", level = 0.95)
 pred_pi <- predict(fit_pcr, newdata = nd, interval = "prediction", level = 0.95)    # PI for individual
 
 cbind(pred_ci, pred_pi)
+
 
