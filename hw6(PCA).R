@@ -1,3 +1,7 @@
+### Question 9.1
+# Using the same crime data set uscrime.txt as in Question 8.2, apply Principal Component Analysis and then create a regression model using the first few principal components.  Specify your new model in terms of the original variables (not the principal components), and compare its quality to that of your solution to Question 8.2.  You can use the R function prcomp for PCA. (Note that to first scale the data, you can include scale. = TRUE to scale as part of the PCA function. 
+
+### Solution 9.1
 # ----- 0. Load data and define variables -----
 df = read.table("uscrime.txt", header = TRUE, check.names = FALSE)
 str(df)
@@ -121,4 +125,5 @@ colnames(nd) <- paste0("PC", 1:k_opt)
 # ----- 7-4. Prediction with confidence and prediction intervals -----
 pred_ci <- predict(fit_pcr, newdata = nd, interval = "confidence", level = 0.95)    # CI for mean
 pred_pi <- predict(fit_pcr, newdata = nd, interval = "prediction", level = 0.95)    # PI for individual
+
 cbind(pred_ci, pred_pi)
