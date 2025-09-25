@@ -13,7 +13,7 @@ X = subset(df, select = -Crime)      # predictor variables (all except Crime)
 lm.res = lm(Crime ~ ., data = df)
 lm.sum = summary(lm.res)
 
-# ----- 2. Perform PCA (standardize variables: mean=0, sd=1) -----
+# ----- 2. Perform PCA (standardize variables: mean=0, sd=1) ----- >> prcomp는 variable을 critical한 순서로 내림차순 자동배열함
 pca = prcomp(X, center = TRUE, scale. = TRUE)
 summary(pca)  # Check explained variance of each component
 
@@ -127,3 +127,4 @@ pred_ci <- predict(fit_pcr, newdata = nd, interval = "confidence", level = 0.95)
 pred_pi <- predict(fit_pcr, newdata = nd, interval = "prediction", level = 0.95)    # PI for individual
 
 cbind(pred_ci, pred_pi)
+
