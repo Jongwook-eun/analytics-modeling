@@ -1,3 +1,12 @@
+### Question 11.1
+# Using the crime data set uscrime.txt from Questions 8.2, 9.1, and 10.1, build a regression model using:
+# Stepwise regression
+# Lasso
+# Elastic net
+# For Parts 2 and 3, remember to scale the data first – otherwise, the regression coefficients will be on different scales and the constraint won’t have the desired effect. 
+# For Parts 2 and 3, use the glmnet function in R.  
+
+### Solution 11.1
 ## [1] Stepwise Regression
 library(MASS)
 uscrime <- read.table("uscrime.txt", header = TRUE)
@@ -21,7 +30,7 @@ summary(step_model)
 cat("\n=============================\nSelected Variables\n=============================\n")
 print(step_model$call)
 
-# 4. (선택) 모델 진단
+# 4. 모델 진단
 par(mfrow = c(2, 2))
 plot(step_model)
 
@@ -54,7 +63,7 @@ lasso_coef <- coef(cv_lasso, s = "lambda.min")
 cat("\n=============================\nLasso Coefficients\n=============================\n")
 print(lasso_coef)
 
-# 8. (선택) 시각화
+# 8. 시각화
 par(mfrow = c(1,2))
 plot(lasso_model, xvar = "lambda", main = "Lasso Paths")
 plot(cv_lasso, main = "Cross-validation for Lasso")
@@ -86,7 +95,8 @@ elastic_coef <- coef(cv_elastic, s = "lambda.min")
 cat("\n=============================\nElastic Net Coefficients (alpha = 0.5)\n=============================\n")
 print(elastic_coef)
 
-# 7. (선택) 시각화
+# 7. 시각화
 par(mfrow = c(1,2))
 plot(elastic_model, xvar = "lambda", main = "Elastic Net Paths (alpha=0.5)")
+
 plot(cv_elastic, main = "Cross-validation for Elastic Net (alpha=0.5)")
