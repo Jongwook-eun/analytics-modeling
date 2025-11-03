@@ -1,3 +1,14 @@
+### Question 14.1
+# The breast cancer data set breast-cancer-wisconsin.data.txt from https://archive.ics.uci.edu/dataset/15/breast+cancer+wisconsin+original  (description available at the same URL) has missing values.
+# 1. Use the mean/mode imputation method to impute values for the missing data.
+# 2. Use regression to impute values for the missing data.
+# 3. Use regression with perturbation to impute values for the missing data.
+# 4. (Optional) Compare the results and quality of classification models (e.g., SVM, KNN) build using 
+	# (1) the data sets from questions 1,2,3; 
+	# (2) the data that remains after data points with missing values are removed; and 
+	# (3) the data set when a binary variable is introduced to indicate missing values.
+
+### Solution 14.1
 #install.packages("mice")
 library(mice)
 data <- read.csv("breast-cancer-wisconsin.data.txt", header = FALSE)
@@ -48,3 +59,4 @@ data_reg_perturb <- complete(imp_reg_perturb)
 # 확인
 imp_reg_perturb$imp$Bare_nuclei
 summary(data_reg_perturb$Bare_nuclei)
+
