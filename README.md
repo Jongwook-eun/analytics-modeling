@@ -1,4 +1,4 @@
-## 📁 Data Analytics in Business
+## 📁 Introduction to Analytics Modeling (Fall 2025)
 Georgia Tech Master of Science in Analytics — ISYE 6501
 
 ---
